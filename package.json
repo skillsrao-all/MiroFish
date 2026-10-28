@@ -9,7 +9,8 @@
     "dev": "concurrently --kill-others -n \"backend,frontend\" -c \"green,cyan\" \"npm run backend\" \"npm run frontend\"",
     "backend": "cd backend && uv run python run.py",
     "frontend": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build"
+    "build": "cd frontend && npm run build",
+    "codespace": "cd frontend && VITE_API_BASE_URL=/ npm run build && cd .. && concurrently --kill-others -n \"backend,frontend\" -c \"green,cyan\" \"npm run backend\" \"cd frontend && __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=.app.github.dev npx vite preview --port 3000 --strictPort\""
   },
   "devDependencies": {
     "concurrently": "^9.2.4"
